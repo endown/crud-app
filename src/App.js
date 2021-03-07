@@ -1,27 +1,28 @@
-import { div } from 'prelude-ls';
 import React from  'react';
-// function App() {
-//   return (
-//     <React.Fragment>
-//       <input type="text" onClick={()=> {console.log("clicked!")}} />
-//       <input type="text" onChange={()=> {console.log("clicked!")}} />
-//     </React.Fragment>
-//   );
-// }
 
 const App = () => {
+  const profiles = [
+    { name: "Taro", age: 10}, 
+    { name: "Hanako", age: 5}, 
+    { name: "Hanak" }, 
+  ]
   return (
     <div>
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
+      {
+        profiles.map((profile, index)=> {
+          return <User name = {profile.name} age={profile.age} key={index} />
+        })
+      }
     </div>
   )
 }
 
-const Cat = () => {
-  return <div>Meow!!</div>
+const User = (props) => {
+  return <div>Hi!, I am {props.name}! and {props.age}years old!</div>
+}
+
+
+User.defeultProps = {
+  age: 1
 }
 export default App;
